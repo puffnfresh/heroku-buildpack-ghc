@@ -250,7 +250,8 @@ fi
 
 echo "-----> Installing user application"
 cabal configure --disable-library-profiling --disable-executable-profiling --disable-tests --disable-library-coverage --disable-benchmarks --enable-executable-stripping --disable-split-objs || true
-cabal install --only-dependencies --reorder-goals --disable-library-profiling --disable-tests --disable-library-coverage --disable-benchmarks --disable-documentation --disable-split-objs -j
+echo "cabal install --only-dependencies --reorder-goals --disable-library-profiling --disable-tests --disable-library-coverage --disable-benchmarks --disable-documentation --disable-split-objs --extra-lib-dirs=/app/vendor/ghc-libs --extra-include-dirs=/app/vendor/ghc-includes"
+cabal install --only-dependencies --reorder-goals --disable-library-profiling --disable-tests --disable-library-coverage --disable-benchmarks --disable-documentation --disable-split-objs --extra-lib-dirs=/app/vendor/ghc-libs --extra-include-dirs=/app/vendor/ghc-includes
 cabal build -j
 
 # Set context environment variables.
